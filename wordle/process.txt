@@ -4,3 +4,6 @@
 4. Created Components folder and added two components ->
     - Board
     - Keyboard
+5. The Board is represented in the form of a matrix. This matrix is created using 
+   another file named Words.js
+   ?? Why are some files written under Components folder and others directly under src??
