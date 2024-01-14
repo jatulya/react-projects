@@ -1,0 +1,6 @@
+1. created React app
+2. Deleted unnecessary files
+3. Created a nav bar
+4. Created Components folder and added two components ->
+    - Board
+    - Keyboard
