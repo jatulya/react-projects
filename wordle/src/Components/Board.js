@@ -55,7 +55,7 @@ function Board() {
         <Letter letterPos={4} attemptVal ={5} />
       </div>
 
-    </div>
+    </div>  
   )
 }
 
