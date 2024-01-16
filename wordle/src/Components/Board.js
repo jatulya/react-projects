@@ -1,14 +1,12 @@
 // type rfce, then press enter key to get basic code
 // this component contains the basic of our code
-import React, { useState } from 'react' 
-import { boardDefault } from '../Words'
+import React from 'react' 
 import Letter from './Letter'
 
 function Board() {
   
   return (
     <div className='board'>
-        {" "}
       <div className='row'>
         <Letter letterPos={0} attemptVal ={0} />
         <Letter letterPos={1} attemptVal ={0} />
