@@ -2,13 +2,22 @@ import { createContext, useState } from 'react';
 import './App.css';
 import Board from './Components/Board';
 import Keyboard from './Components/Keyboard';
-import { boardDefault } from './Words'
 
 export const AppContext = createContext()
 //context api is used to pass states used in parent component to all 
 //the mentioned under Appcontext.provider. the values passed is given in the values
 
 function App() {
+  
+  const boardDefault = [
+    ["","","","",""],
+    ["","","","",""],
+    ["","","","",""],
+    ["","","","",""],
+    ["","","","",""],
+    ["","","","",""],
+  ]
+  
   const [board, setBoard] = useState(boardDefault)
 
   return (
