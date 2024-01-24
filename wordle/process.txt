@@ -12,4 +12,5 @@
 zuseand
 8. We then create Keyboard and Keys Components. Keyboard displays a virtual keyboard. The keys are stored in arrays and keyboard display is done through mapping the three arrays in three rows. Enter key and backspace key are written separately.
 9. Keys Component does the main work. When the user clicks on the keys, they have to be displayed or funtioned accordingly. That work is done here.
-
+10. We write the functions in App.js and import it to the children components using context api
+11. In Keyboard component, we call useEffect and useCallBack to add the event listener of keys pressing from the keyboard and do the functions accordingly
