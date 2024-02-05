@@ -14,3 +14,5 @@ zuseand
 9. Keys Component does the main work. When the user clicks on the keys, they have to be displayed or funtioned accordingly. That work is done here.
 10. We write the functions in App.js and import it to the children components using context api
 11. In Keyboard component, we call useEffect and useCallBack to add the event listener of keys pressing from the keyboard and do the functions accordingly
+12. Add appropriate colorrings to the letter positions to identify if they are correct or almost correct or wrong
+13. 

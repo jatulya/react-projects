@@ -22,10 +22,10 @@ function App() {
   const [currAttempt, setCurrAttempt] = useState({attempt:0, letterPos: 0})
     
   const newBoard = [...board]
+  const correctWord = "RIGHT"
 
-   const onSelectLetter = (keyVal) => {
+  const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > 4) return;
-  
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
     setBoard(newBoard)
     setCurrAttempt({ ...currAttempt, letterPos: currAttempt.letterPos + 1 })
@@ -34,7 +34,6 @@ function App() {
   
    const onDelete = () => {
     if (currAttempt.letterPos === 0) return
-  
     newBoard[currAttempt.attempt][currAttempt.letterPos - 1] = ""
     setBoard(newBoard)
     setCurrAttempt({ ...currAttempt, letterPos: currAttempt.letterPos - 1 })
@@ -48,7 +47,16 @@ function App() {
   return (
     <div className="App">
       <nav><h1>WORDLE CODDLE</h1></nav>
-      <AppContext.Provider value={{board, setBoard, currAttempt, setCurrAttempt, onDelete, onEnter,onSelectLetter, boardDefault}}>
+      <AppContext.Provider value={{
+        board, 
+        setBoard, 
+        currAttempt, 
+        setCurrAttempt, 
+        onDelete, 
+        onEnter,onSelectLetter, 
+        boardDefault,
+        correctWord
+        }}>
         <div className='game'>
           <Board />
           <Keyboard />
