@@ -15,4 +15,5 @@ zuseand
 10. We write the functions in App.js and import it to the children components using context api
 11. In Keyboard component, we call useEffect and useCallBack to add the event listener of keys pressing from the keyboard and do the functions accordingly
 12. Add appropriate colorrings to the letter positions to identify if they are correct or almost correct or wrong
-13. 
+13. Create a .txt file that contains different five letter Words
+14. create an asynch function that generates a set out of the wordbank

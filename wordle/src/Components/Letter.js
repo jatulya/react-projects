@@ -6,7 +6,6 @@ function Letter({letterPos, attemptVal}) {
     let {board, correctWord} = useContext(AppContext) 
     let letter = board[attemptVal][letterPos]
     // boardDefault[2][4] => letter at the 5th position in the 3rd attempt
-
     let correct = correctWord[letterPos] === letter
     let almost = !correct && letter !== "" && correctWord.includes(letter)  //if the input letter in the word ; !correct -> removes any clashes with correct position
     let letterState = correct ? "correct" : almost ? "almost" : "error"

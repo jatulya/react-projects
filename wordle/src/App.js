@@ -1,5 +1,6 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
+import { boardDefault, generateWordSet } from './Words';
 import Board from './Components/Board';
 import Keyboard from './Components/Keyboard';
 
@@ -9,20 +10,18 @@ export const AppContext = createContext()
 
 function App() {
   
-  const boardDefault = [
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-  ]  
-
   const [board, setBoard] = useState(boardDefault)
   const [currAttempt, setCurrAttempt] = useState({attempt:0, letterPos: 0})
     
   const newBoard = [...board]
   const correctWord = "RIGHT"
+
+  useEffect(() => {
+    generateWordSet().then((words) => {
+      console.log(words)
+    })
+  
+  }, [])
 
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > 4) return;
