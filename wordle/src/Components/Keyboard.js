@@ -20,7 +20,7 @@ function Keyboard() {
       const allKeys = [...keys1, ...keys2, ...keys3];
 
       allKeys.forEach((key) => {
-        if (e.key.toLowerCase() === key.toLowerCase()) {
+        if (e.key.toUpperCase() === key.toUpperCase()) {
           onSelectLetter(key);
         }
       });
@@ -34,7 +34,7 @@ function Keyboard() {
   }, [handleKeyPress])
 
   return (
-    <div className='keyboard' onClick={handleKeyPress}>
+    <div className='keyboard'>
 
       <div className='line1'>
         {keys1.map((key) => {
@@ -49,7 +49,6 @@ function Keyboard() {
       </div>
 
       <div className='line3'>
-
         <Keys keyVal={"ENTER"} bigKey />
 
         {keys3.map((key) => {
