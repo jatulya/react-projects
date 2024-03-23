@@ -13,11 +13,14 @@ function App() {
   const [board, setBoard] = useState(boardDefault)
   const [currAttempt, setCurrAttempt] = useState({attempt:0, letterPos: 0})    
   const newBoard = [...board]
+  const [wordSet, setWordSet] = useState(new Set())
+  const [disabledLetters, setDisabledLetters] = useState([])
   const correctWord = "RIGHT"
 
   useEffect(() => {
     generateWordSet().then((words) => {
-      console.log(words)
+      console.log(words.wordSet)
+      setWordSet(words.wordSet) //this function is defined as asynch function
     }) 
   }, [])
 
@@ -36,8 +39,20 @@ function App() {
   }
   
    const onEnter = () => {
-    if (currAttempt.letterPos !== 5) return
-    setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 })
+    if (currAttempt.letterPos !== 5) return;
+    //taking complete word
+    let currWord = ""
+    for (let i=0; i<5; i++){
+      currWord += board[currAttempt.attempt][i]
+    }
+    //checking if the word exists
+    if (wordSet.has(currWord.toLowerCase()))
+      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 })
+    else
+      alert("Word not found")
+
+    if (currWord == correctWord)
+      alert("Congrats, you won")
   }
 
   return (
@@ -51,7 +66,9 @@ function App() {
         onDelete, 
         onEnter,onSelectLetter, 
         boardDefault,
-        correctWord
+        correctWord,
+        disabledLetters,
+        setDisabledLetters
       }}>
         <div className='game'>
           <Board />
