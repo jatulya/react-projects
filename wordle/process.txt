@@ -7,13 +7,20 @@
 5. The Board is represented in the form of a matrix. This matrix is created using 
    another file named Words.js
    ?? Why are some files written under Components folder and others directly under src??
-6. Another file named "Letter.js" is created. This file rn contains a small code to display the letter at the required place
-7. In App.js, we imported context api and imported the state board and the setBoard to all the child components which would make the child components access them .
+6. Another file named "Letter.js" is created. This file rn contains a small code to display 
+    the letter at the required place
+7. In App.js, we imported context api and imported the state board and the setBoard to
+ all the child components which would make the child components access them .
 zuseand
-8. We then create Keyboard and Keys Components. Keyboard displays a virtual keyboard. The keys are stored in arrays and keyboard display is done through mapping the three arrays in three rows. Enter key and backspace key are written separately.
-9. Keys Component does the main work. When the user clicks on the keys, they have to be displayed or funtioned accordingly. That work is done here.
+8. We then create Keyboard and Keys Components. Keyboard displays a virtual keyboard. 
+    The keys are stored in arrays and keyboard display is done through mapping the three arrays 
+    in three rows. Enter key and backspace key are written separately.
+9. Keys Component does the main work. When the user clicks on the keys, they have to be 
+    displayed or funtioned accordingly. That work is done here.
 10. We write the functions in App.js and import it to the children components using context api
-11. In Keyboard component, we call useEffect and useCallBack to add the event listener of keys pressing from the keyboard and do the functions accordingly
-12. Add appropriate colorrings to the letter positions to identify if they are correct or almost correct or wrong
+11. In Keyboard component, we call useEffect and useCallBack to add the event listener of keys 
+    pressing from the keyboard and do the functions accordingly
+12. Add appropriate colorrings to the letter positions to identify if they are correct or almost 
+correct (green) or wrong(red).
 13. Create a .txt file that contains different five letter Words
 14. create an asynch function that generates a set out of the wordbank

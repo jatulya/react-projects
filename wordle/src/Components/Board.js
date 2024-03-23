@@ -3,58 +3,22 @@
 import React from 'react' 
 import Letter from './Letter'
 
+function generateRows() {
+  const rows = [];
+  for (let i = 0; i < 5; i++) {
+    const letters = [];
+    for (let j = 0; j < 5; j++) {
+      letters.push(<Letter letterPos={j} attemptVal={i} />);
+    }
+    rows.push(<div className='row'>{letters}</div>);
+  }
+  return rows;
+}
+
 function Board() {
-  
   return (
     <div className='board'>
-      <div className='row'>
-        <Letter letterPos={0} attemptVal ={0} />
-        <Letter letterPos={1} attemptVal ={0} />
-        <Letter letterPos={2} attemptVal ={0} />
-        <Letter letterPos={3} attemptVal ={0} />
-        <Letter letterPos={4} attemptVal ={0} />
-      </div>
-
-      <div className='row'>
-        <Letter letterPos={0} attemptVal ={1} />
-        <Letter letterPos={1} attemptVal ={1} />
-        <Letter letterPos={2} attemptVal ={1} />
-        <Letter letterPos={3} attemptVal ={1} />
-        <Letter letterPos={4} attemptVal ={1} />
-      </div>
-
-      <div className='row'>
-        <Letter letterPos={0} attemptVal ={2} />
-        <Letter letterPos={1} attemptVal ={2} />
-        <Letter letterPos={2} attemptVal ={2} />
-        <Letter letterPos={3} attemptVal ={2} />
-        <Letter letterPos={4} attemptVal ={2} />
-      </div>
-
-      <div className='row'>
-        <Letter letterPos={0} attemptVal ={3} />
-        <Letter letterPos={1} attemptVal ={3} />
-        <Letter letterPos={2} attemptVal ={3} />
-        <Letter letterPos={3} attemptVal ={3} />
-        <Letter letterPos={4} attemptVal ={3} />
-      </div>
-
-      <div className='row'>
-        <Letter letterPos={0} attemptVal ={4} />
-        <Letter letterPos={1} attemptVal ={4} />
-        <Letter letterPos={2} attemptVal ={4} />
-        <Letter letterPos={3} attemptVal ={4} />
-        <Letter letterPos={4} attemptVal ={4} />
-      </div>
-
-      <div className='row'>
-        <Letter letterPos={0} attemptVal ={5} />
-        <Letter letterPos={1} attemptVal ={5} />
-        <Letter letterPos={2} attemptVal ={5} />
-        <Letter letterPos={3} attemptVal ={5} />
-        <Letter letterPos={4} attemptVal ={5} />
-      </div>
-
+      {generateRows()} 
     </div>  
   )
 }

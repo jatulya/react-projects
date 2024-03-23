@@ -11,24 +11,21 @@ export const AppContext = createContext()
 function App() {
   
   const [board, setBoard] = useState(boardDefault)
-  const [currAttempt, setCurrAttempt] = useState({attempt:0, letterPos: 0})
-    
+  const [currAttempt, setCurrAttempt] = useState({attempt:0, letterPos: 0})    
   const newBoard = [...board]
   const correctWord = "RIGHT"
 
   useEffect(() => {
     generateWordSet().then((words) => {
       console.log(words)
-    })
-  
+    }) 
   }, [])
 
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > 4) return;
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
     setBoard(newBoard)
-    setCurrAttempt({ ...currAttempt, letterPos: currAttempt.letterPos + 1 })
-  
+    setCurrAttempt({ ...currAttempt, letterPos: currAttempt.letterPos + 1 }) 
   }
   
    const onDelete = () => {
@@ -55,7 +52,7 @@ function App() {
         onEnter,onSelectLetter, 
         boardDefault,
         correctWord
-        }}>
+      }}>
         <div className='game'>
           <Board />
           <Keyboard />
