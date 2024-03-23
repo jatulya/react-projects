@@ -18,13 +18,11 @@ function Keyboard() {
     }
     else {
       const allKeys = [...keys1, ...keys2, ...keys3];
-
       allKeys.forEach((key) => {
         if (e.key.toUpperCase() === key.toUpperCase()) {
           onSelectLetter(key);
         }
       });
-
     }
   })
   //adding and removing keyboard event listener
@@ -50,11 +48,9 @@ function Keyboard() {
 
       <div className='line3'>
         <Keys keyVal={"ENTER"} bigKey />
-
         {keys3.map((key) => {
           return <Keys keyVal={key} />
         })}
-
         <Keys keyVal={"DELETE"} bigKey />
       </div>
 

@@ -1,3 +1,5 @@
+Click Alt+Z to wrap the code around the window size
+
 1. created React app
 2. Deleted unnecessary files
 3. Created a nav bar
