@@ -25,4 +25,7 @@ zuseand
 12. Add appropriate colorrings to the letter positions to identify if they are correct or almost 
 correct (green) or wrong(red).
 13. Create a .txt file that contains different five letter Words
-14. create an asynch function that generates a set out of the wordbank
+14. create an asynch function that generates a set out of the wordbank. This function is exported to app.js. useEffect is used to generate the wordset once
+15. we check if the entered word actually exists and do the necessary actions.
+16. we then find out which all letters are to disabled from the keyboard (the users can still use them, but in the keyboard they will be shown disabled)
+17. Another component GameOver is created 
