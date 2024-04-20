@@ -1,0 +1,16 @@
+1. Create a new react project
+2. In the app.js, create a basic login and signup form
+3. npm install firebase
+4. Create firebase-config.js file in src folder. It contains  your Firebase config object with apiKey, authDomain to connect with Firebase database. Necessary for every firebase project
+5. Start a new project in the firebase site
+6. we need to configure  our project with info from the firebase console
+    a. create an app in the started project on the Firebase Console (the open and closed tags)
+    b. copy the variable generated to a .env file. copy the remaining code to firebase-config.js
+    [ npm install dotenv
+      import dotenv from 'dotenv';
+      dotenv.config();
+      const env_Var = process.env.vars]
+    c. export the variable used with function getAuth (auth)
+7. Go to authentication, click on getStarted, choose the method of authentication and enable it.
+8. Create functions in App.js for the buttons
+
