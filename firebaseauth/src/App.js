@@ -1,10 +1,11 @@
 import './App.css';
 import {useState, useEffect} from "react"
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth'
-import {auth} from './firebase-config'
+import {auth, db} from './firebase-config'
+import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc} from 'firebase/firestore'
 
 function App() {
-  
+  /*
   //take the data from the form
   const [regEmail, setRegEmail] = useState("");
   const [regPassword, setRegPassword] = useState("");
@@ -17,8 +18,7 @@ function App() {
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     });
-
-}, [])
+  }, [])
   //for registering a new user
   const register = async() => {
     try{
@@ -78,7 +78,65 @@ function App() {
       <h4> User Logged In: </h4>
       {user?.email} 
       
-      <button onClick={logout}> Sign Out </button>
+      <button onClick={logout}> Sign Out </button> 
+    </div>*/
+      const [students, setStudents] = useState([])
+      const studCollectionRef = collection(db, "students") //for diff tables, different collections
+      //grabbing the data
+      const [newName, setNewName] = useState("")
+      const [newAge, setNewAge] = useState(0)
+
+      const createStudent = async() => {
+        await addDoc(studCollectionRef, {name:newName, age:Number(newAge)})
+      }
+      
+      useEffect(() => {
+        const getStudents = async() => {
+          const studentsData = await getDocs(studCollectionRef) //complete data
+          //console.log(studentsData) //this prints lots of unwanted data. we need only the field data
+          setStudents(studentsData.docs.map((doc) => ({...doc.data(), id: doc.id }))) //only want fields in array 
+          /* when we doc.data(), we wont get id of the object. so we add ... to make the obj combo of both the id. here doc refers to each row */
+        }
+        getStudents()
+      }, [])
+
+      const updateStudent = async(id, age) => {
+        const newFields = {age : age + 1}
+        const docToChange = doc(db, 'students', id)
+        //instance of the docs with a particular field
+        await updateDoc(docToChange, newFields)
+      }
+
+      const deleteStudent = async(id) => {
+        const docToDelete = doc(db, 'students', id)
+        await deleteDoc(docToDelete)
+      }
+
+      return (
+        <div className="App">
+        <input
+          placeholder="Name..."
+          onChange={(e)=>{setNewName(e.target.value)}}/>
+        <input
+          type="number"
+          placeholder="Age..." 
+          onChange={(e)=>{setNewAge(e.target.value)}}/>
+        <button onClick={createStudent}> Create User</button>
+
+        {students.map((user) => {
+          return (
+            <div>
+              {" "}
+              <h1>Name: {user.name}</h1>
+              <h1>Age: {user.age}</h1>
+              <button 
+                onClick={()=> {updateStudent(user.id, user.age)}}>{" "}
+                Increase Age 
+              </button>
+              <button onClick={()=> {deleteStudent(user.id)}}>{" "}Delete Student</button>
+            </div>
+          );
+        })}
     </div>
   );
 }

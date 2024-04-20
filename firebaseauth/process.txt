@@ -15,3 +15,10 @@
 8. Create functions in App.js for the buttons
 9. import Necessary functions from firebase/auth
 
+Integrating Firestore
+-------------------
+1. Go to Firestore database and create a database
+2. Change the rules to if true: to allow both read and write
+3. In the start collection, add table name, primary key id and fields. document => tuples or rows
+4. get the list of students (table name) from the db whenever the page renders using useEffect
+5. Store the values using useState and perform crud by importing functions from firebase/Firestore
