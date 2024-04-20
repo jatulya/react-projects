@@ -13,4 +13,5 @@
     c. export the variable used with function getAuth (auth)
 7. Go to authentication, click on getStarted, choose the method of authentication and enable it.
 8. Create functions in App.js for the buttons
+9. import Necessary functions from firebase/auth
 

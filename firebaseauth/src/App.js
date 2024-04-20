@@ -1,6 +1,6 @@
 import './App.css';
-import {useState} from "react"
-import {createUserWithEmailAndPassword} from 'firebase/auth'
+import {useState, useEffect} from "react"
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import {auth} from './firebase-config'
 
 function App() {
@@ -10,7 +10,15 @@ function App() {
   const [regPassword, setRegPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
+  
+  //onAuthStateChanged is like a useeffect that recognizes any changes in the user's state -> log in, log out, refresh
+  const [user, setUser] = useState({})
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    });
 
+}, [])
   //for registering a new user
   const register = async() => {
     try{
@@ -21,8 +29,18 @@ function App() {
     }
   };
 
-  const login = async() => {};
-  const logout = async() => {};
+  const login = async() => {
+    try{
+      const user = await signInWithEmailAndPassword(auth, loginEmail, loginPass) 
+      console.log(user)
+    }catch (error){
+      console.log(error.message)
+    }
+  };
+  
+  const logout = async() => {
+    await signOut(auth);
+  };
 
   return (
     <div className="App">
@@ -58,10 +76,13 @@ function App() {
       </div>
 
       <h4> User Logged In: </h4>
-
+      {user?.email} 
+      
       <button onClick={logout}> Sign Out </button>
     </div>
   );
 }
 
 export default App;
+
+// user?.email -> if  the user is logged in, show their email. If not, don't show anything.
