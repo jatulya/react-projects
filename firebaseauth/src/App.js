@@ -8,42 +8,11 @@ import {ref, uploadBytes, listAll, getDownloadURL} from 'firebase/storage'
 import {v4} from 'uuid'
 
 function App() {
-  const [imgUpload, setImgUpload] = useState(null)
-  const [imgUrls, setImgUrls] = useState([]);
-  const imgsListRef = ref(storage, "images/");
-
-  const uploadImg = () => {
-    if (imgUpload==null) return
-    
-    const imgRef = ref(storage, `images/${imgUpload.name + v4()}`)
-    uploadBytes(imgRef, imgUpload).then((snapshot) =>{
-      getDownloadURL(snapshot.ref).then((url) => {
-        setImgUrls((prev) => [...prev, url]);
-      });    
-    })
-  }
- 
-  useEffect(()=>{
-    //reference to all the files inside the images folder
-    listAll(imgsListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImgUrls((prev) => [...prev, url]);
-        });
-      });
-    });
-  },[])
-
-  return(
+   return (
     <div className='App'>
-      <input 
-        type="file"
-        onChange={(e)=> {setImgUpload(e.target.files[0])}} />
-      <button onClick={uploadImg}> Upload Image</button>
-      {imgUrls.map((url) => {
-        return <img src={url} />;
-      })}
-    </div>  )
+      
+    </div>
+   )
 }
 
 export default App;
@@ -127,6 +96,8 @@ export default App;
       
       <button onClick={logout}> Sign Out </button> 
     </div>
+
+    crud*****
       const [students, setStudents] = useState([])
       const studCollectionRef = collection(db, "students") //for diff tables, different collections
       //grabbing the data
@@ -185,4 +156,44 @@ export default App;
           );
         })}
     </div>
-  );*/
+  );
+
+  image uploading ****
+  const [imgUpload, setImgUpload] = useState(null)
+  const [imgUrls, setImgUrls] = useState([]);
+  const imgsListRef = ref(storage, "images/");
+
+  const uploadImg = () => {
+    if (imgUpload==null) return
+    
+    const imgRef = ref(storage, `images/${imgUpload.name + v4()}`)
+    uploadBytes(imgRef, imgUpload).then((snapshot) =>{
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImgUrls((prev) => [...prev, url]);
+      });    
+    })
+  }
+ 
+  useEffect(()=>{
+    //reference to all the files inside the images folder
+    listAll(imgsListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImgUrls((prev) => [...prev, url]);
+        });
+      });
+    });
+  },[])
+
+  return(
+    <div className='App'>
+      <input 
+        type="file"
+        onChange={(e)=> {setImgUpload(e.target.files[0])}} />
+      <button onClick={uploadImg}> Upload Image</button>
+      {imgUrls.map((url) => {
+        return <img src={url} />;
+      })}
+    </div> 
+
+  */
