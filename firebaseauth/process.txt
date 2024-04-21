@@ -1,3 +1,5 @@
+User authentication
+-------------------
 1. Create a new react project
 2. In the app.js, create a basic login and signup form
 3. npm install firebase
@@ -22,3 +24,15 @@ Integrating Firestore
 3. In the start collection, add table name, primary key id and fields. document => tuples or rows
 4. get the list of students (table name) from the db whenever the page renders using useEffect
 5. Store the values using useState and perform crud by importing functions from firebase/Firestore
+
+Adding Images
+--------------
+1. install uuid for generating random names for images to be stored
+2. Go to Storage in firebase site and get started
+3. Change the rules to public so anyone can access them
+4. import {getStorage} and create a storage
+5. Create a frontend to upload the images.
+  <input 
+    type="file"
+    onChange={(e)=> {setImgUpload(e.target.files[0])}} 
+  />

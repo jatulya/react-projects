@@ -3,9 +3,56 @@ import {useState, useEffect} from "react"
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import {auth, db} from './firebase-config'
 import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc} from 'firebase/firestore'
+import {storage} from './firebase-config'
+import {ref, uploadBytes, listAll, getDownloadURL} from 'firebase/storage'
+import {v4} from 'uuid'
 
 function App() {
-  /*
+  const [imgUpload, setImgUpload] = useState(null)
+  const [imgUrls, setImgUrls] = useState([]);
+  const imgsListRef = ref(storage, "images/");
+
+  const uploadImg = () => {
+    if (imgUpload==null) return
+    
+    const imgRef = ref(storage, `images/${imgUpload.name + v4()}`)
+    uploadBytes(imgRef, imgUpload).then((snapshot) =>{
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImgUrls((prev) => [...prev, url]);
+      });    
+    })
+  }
+ 
+  useEffect(()=>{
+    //reference to all the files inside the images folder
+    listAll(imgsListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImgUrls((prev) => [...prev, url]);
+        });
+      });
+    });
+  },[])
+
+  return(
+    <div className='App'>
+      <input 
+        type="file"
+        onChange={(e)=> {setImgUpload(e.target.files[0])}} />
+      <button onClick={uploadImg}> Upload Image</button>
+      {imgUrls.map((url) => {
+        return <img src={url} />;
+      })}
+    </div>  )
+}
+
+export default App;
+
+// user?.email -> if  the user is logged in, show their email. If not, don't show anything.
+
+
+
+/*
   //take the data from the form
   const [regEmail, setRegEmail] = useState("");
   const [regPassword, setRegPassword] = useState("");
@@ -79,7 +126,7 @@ function App() {
       {user?.email} 
       
       <button onClick={logout}> Sign Out </button> 
-    </div>*/
+    </div>
       const [students, setStudents] = useState([])
       const studCollectionRef = collection(db, "students") //for diff tables, different collections
       //grabbing the data
@@ -95,7 +142,7 @@ function App() {
           const studentsData = await getDocs(studCollectionRef) //complete data
           //console.log(studentsData) //this prints lots of unwanted data. we need only the field data
           setStudents(studentsData.docs.map((doc) => ({...doc.data(), id: doc.id }))) //only want fields in array 
-          /* when we doc.data(), we wont get id of the object. so we add ... to make the obj combo of both the id. here doc refers to each row */
+          /* when we doc.data(), we wont get id of the object. so we add ... to make the obj combo of both the id. here doc refers to each row 
         }
         getStudents()
       }, [])
@@ -138,9 +185,4 @@ function App() {
           );
         })}
     </div>
-  );
-}
-
-export default App;
-
-// user?.email -> if  the user is logged in, show their email. If not, don't show anything.
+  );*/
