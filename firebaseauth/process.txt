@@ -40,3 +40,17 @@ Adding Images
 Python code integration
 ------------------------
 1. Create a new folder for backend and create a py file server.py
+2. Create a virtual environment in the this folder
+    python -m venv myvenv
+3. Activate the myvenv
+    windows : .\myvenv\Scripts\activate
+    linux   : source myvenv/bin/activate
+4.  Install flask in the virtual environment
+    pip install Flask
+    change the interpreter to the myvenv/Scripts/python.exe
+5. Create a flask application and set the routes
+6. In the package.json of the react application, add "proxy" : "http://127.0.0.1:5000" (the port where backend runs) 
+
+
+
+
