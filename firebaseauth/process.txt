@@ -36,3 +36,7 @@ Adding Images
     type="file"
     onChange={(e)=> {setImgUpload(e.target.files[0])}} 
   />
+
+Python code integration
+------------------------
+1. Create a new folder for backend and create a py file server.py
