@@ -1,5 +1,5 @@
 // SignUp.jsx
-import React from 'react';
+import React, {useEffect} from 'react';
 import {auth, db} from '../firebase-config'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import {setDoc, doc} from 'firebase/firestore'
@@ -39,6 +39,21 @@ const SignUp = () => {
       setErrorMsg(error.message);
     }
   };
+
+  const currUser = localStorage.getItem('currentUser')
+  const id = localStorage.getItem('userId')
+
+  const [test, setTest] = useState([])
+  //backend api
+  useEffect(()=>{
+    fetch(`/testing/${id}`).then(
+      res => res.json()
+    ).then(
+      data => {
+        setTest(data.sum)
+        console.log(data.sum)
+      })
+  },[id])
   
   return (
     <div className='container'>

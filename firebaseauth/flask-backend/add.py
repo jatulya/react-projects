@@ -1,5 +1,5 @@
 def adds(num):
     print(num)
-    return num+7
+    return num+ " from server.py"
 
 

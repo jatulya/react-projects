@@ -124,7 +124,6 @@ export default HomePage;
       useEffect(() => {
         const getStudents = async() => {
           const studentsData = await getDocs(studCollectionRef) //complete data
-          //console.log(studentsData) //this prints lots of unwanted data. we need only the field data
           setStudents(studentsData.docs.map((doc) => ({...doc.data(), id: doc.id }))) //only want fields in array 
           /* when we doc.data(), we wont get id of the object. so we add ... to make the obj combo of both the id. here doc refers to each row 
         }
