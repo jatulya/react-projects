@@ -12,9 +12,15 @@ body {
   padding: 0%;
 }
 
+.heading{
+  background-color: #e7a02e;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .header {
   flex: 30%;
-  background-color: tomato;
+  background-color: rgb(244, 81, 52);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -24,6 +30,7 @@ body {
 .header .inputContainer {
   display: flex;
   flex-direction: column;
+  padding: 5px;
 }
 
 .header input {

@@ -1,0 +1,10 @@
+1. Give Functional Component (FC) type to the function App
+    const App: FC = () => {}
+2. Basic input html
+3. Create state variables with their types mentioned to store the input values
+    const [deadline, setDeadline] = useState<Number>(0)
+4. import ChangeEvent Type from React and assign it to the const functions that set the input values
+      const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {...}
+    here, void is the return Type
+
+
