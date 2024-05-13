@@ -1,25 +1,39 @@
 import React, { FC, useState, ChangeEvent } from 'react';
 import './App.css';
+import {ITask} from './Interfaces'
+import TodoTask from './TodoTask';
 
 const App: FC = () => {
 
   const [task, setTask] = useState<string>("");
   const [deadline, setDeadline] = useState<number>(0);
-  const [todoList, setTodo] = useState([])
+  const [todoList, setTodo] = useState<ITask[]>([])
+
+  //type of todoList = an array of objects ITask 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (e.target.name === 'task'){
       setTask(e.target.value)
-      console.log(task)
     }
     else{
       setDeadline(Number(e.target.value))
-      console.log(deadline)
     }
   }
 
   const addTask = (): void => {
-    setTodo
+    const newTask = {
+      taskName : task, deadline: deadline
+    }
+    setTodo([...todoList,newTask])
+    console.log(todoList)
+    setTask("")
+    setDeadline(0)
+  }
+
+  const completeTask = (taskToDel: string): void => {
+    setTodo(todoList.filter((task) => {
+      return task.taskName !== taskToDel
+    })) 
   }
 
   return (
@@ -46,7 +60,11 @@ const App: FC = () => {
           <button onClick={addTask}>Add Task</button>
       </div>
 
-      <div className='todoList'></div>
+      <div className='todoList'>
+        {todoList.map((stuff: ITask, key: number) => {
+          return <TodoTask item={stuff} completeTask={completeTask} key={key} />
+        })}
+      </div>
     </div>
   );
 }

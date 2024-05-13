@@ -6,5 +6,6 @@
 4. import ChangeEvent Type from React and assign it to the const functions that set the input values
       const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {...}
     here, void is the return Type
-
-
+5. Create an interface to define the types of the objects that will be in todoList 
+6. Display each task that is given in todoList by iterating through each and rendering new component TodoTask. 
+7. Give props to the new component by creating an interface for Props.
