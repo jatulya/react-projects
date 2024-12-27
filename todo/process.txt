@@ -9,3 +9,9 @@
 5. Create an interface to define the types of the objects that will be in todoList 
 6. Display each task that is given in todoList by iterating through each and rendering new component TodoTask. 
 7. Give props to the new component by creating an interface for Props.
+
+Server side 
+1. Create a new folder for the server side code
+2. Install express 
+    npm init
+    npm install express pg \
