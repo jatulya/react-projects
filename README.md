@@ -17,3 +17,35 @@ React works by breaking down the UI into smaller, independent components. Each c
 ## Terms 
 ### Hot Reloading
 Hot reloading is a feature in React that allows you to see the changes you make to your code in real-time without having to restart the application. This is especially useful when you're working on a large application and need to see the effects of your changes quickly.
+
+### Components 
+They are the building blocks of a React application. We import 'React' from 'react' to be able to use JSX components. 
+Example code:-
+```jsx
+import React from 'react';
+function Welcome() {
+    return <> <h1> Hello, World </h1></>;
+}
+```
+
+Note : The returning react component should be wrapped in a single div. The best practice to follow the above example - using <>..</> tags.
+
+### export default component_name
+These keywords let us use the component in another components.
+```jsx
+import component_name from 'path/to/component_name'
+function new_component () {
+    return <> <component_name /> </>;
+}
+```
+
+### transpiler - Babel
+A transpiler converts code written in one language to another. It is used in React because browsers don't understand JSX/TSX. So it converts the code to JS/TS.
+Eg. 
+```jsx
+const element = <h1>Hello, world!</h1>;
+```
+Babel converts it to 
+```js
+const element = React.createElement("h1", null, "Hello, world")
+```
