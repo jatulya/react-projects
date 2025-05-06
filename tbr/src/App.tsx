@@ -1,8 +1,14 @@
+import React from 'react'
+import Header from './components/Header'
+import TbrList from './components/TbrList'
 function App() {
 
   return (
     <>
-      <h1><center>TO-BE-READ LIST</center></h1>
+      <Header />
+      <div className='container'>
+        <TbrList />
+      </div>
     </>
   )
 }
