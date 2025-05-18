@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './components/Header'
-import TbrList from './components/TbrList'
+import TbrList from './components/TbrForm'
 function App() {
 
   return (
